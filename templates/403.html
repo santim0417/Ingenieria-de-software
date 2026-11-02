@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>SICAPP - 403 Forbidden</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; background-color: #fff5f5; }
+        .error-card { background: white; border: 2px solid #feb2b2; padding: 30px; border-radius: 8px; display: inline-block; }
+        h1 { color: #e53e3e; }
+        a { color: #ce31c4; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="error-card">
+        <h1>SICAPP - HTTP 403 Forbidden</h1>
+        <h3>Acceso Denegado (TC-SIC11-01)</h3>
+        <p>El usuario actual <b>({{ usuario.nombre }})</b> posee el rol <b>{{ usuario.rol }}</b> y no tiene permisos para este endpoint protegido.</p>
+        <a href="/home">Volver al Inicio</a>
+    </div>
+</body>
+</html>

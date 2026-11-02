@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>SICAPP - Extensión</title>
+    <style>
+        body { margin: 0; font-family: Arial, sans-serif; background-color: #f4f6f9; }
+        .header-top { background: #fff; padding: 10px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #ddd; }
+        .logo-title { font-size: 20px; font-weight: bold; color: #1a365d; }
+        .nav-bar { background-color: #1e293b; padding: 10px 40px; }
+        .nav-bar a { color: white; text-decoration: none; margin-right: 20px; font-weight: bold; }
+        .content { padding: 30px; text-align: center; }
+        .section-header { background-color: #2b6cb0; color: white; padding: 10px; margin-top: 20px; font-weight: bold; border-radius: 4px; }
+        .grid-container { display: flex; justify-content: center; gap: 30px; margin: 20px 0; flex-wrap: wrap; }
+        .card { text-align: center; width: 140px; cursor: pointer; }
+        .icon-box { width: 60px; height: 60px; background-color: #805ad5; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; font-size: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="header-top">
+        <div class="logo-title">INSTITUCIÓN UNIVERSITARIA PASCUAL BRAVO | SICAPP</div>
+        <div><span>{{ usuario.nombre.split()[0] }}</span> | <a href="/logout">Cerrar sesión</a></div>
+    </div>
+    <div class="nav-bar">
+        <a href="/home">Inicio</a>
+        <a href="/estudiantes">Estudiantes</a>
+        <a href="/extension">Extensión</a>
+    </div>
+
+    <div class="content">
+        <h2>Extensión y Proyección Social</h2>
+        <p>Servicios a la comunidad, educación continua y cursos abiertos.</p>
+
+        <div class="section-header">OFERTA ACADÉMICA Y SERVICIOS</div>
+        <div class="grid-container">
+            <div class="card"><div class="icon-box">📚</div>Cursos y Diplomados</div>
+            <div class="card"><div class="icon-box" style="background-color: #dd6b20;">🏢</div>Prácticas y Convenios</div>
+            <div class="card"><div class="icon-box" style="background-color: #319795;">🌱</div>Proyección Social</div>
+            <div class="card"><div class="icon-box" style="background-color: #d69e2e;">📜</div>Certificados de Extensión</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,375 @@
+{
+    "info": {
+        "_postman_id": "9b8c7d6e-5f4a-3b2c-1d0e-sicapp2026qa",
+        "name": "SICAPP_PROTOTIPO - Suite Pruebas de Integracion QA",
+        "description": "Coleccion oficial de Pruebas de Integracion HTTP para el prototipo SICAPP (Flask: http://127.0.0.1:5000). Valida los casos TC-SIC2-01 a TC-SIC26-02.",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "1. TC-SIC8-02: Login con formato de correo invalido",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"HTTP Status es 200 (Renderiza alerta en Login)\", function () {",
+                            "    pm.response.to.have.status(200);",
+                            "});",
+                            "pm.test(\"TC-SIC8-02: Muestra error de formato de correo no valido\", function () {",
+                            "    pm.expect(pm.response.text()).to.include(\"Error: Formato de correo electrónico no válido\");",
+                            "});",
+                            "pm.test(\"RNF-01: Tiempo de respuesta menor a 500ms\", function () {",
+                            "    pm.expect(pm.response.responseTime).to.be.below(500);",
+                            "});"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "urlencoded",
+                    "urlencoded": [
+                        {
+                            "key": "email",
+                            "value": "correo_invalido_sin_dominio",
+                            "type": "text"
+                        },
+                        {
+                            "key": "password",
+                            "value": "Password123",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "http://127.0.0.1:5000/login",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "5000",
+                    "path": [
+                        "login"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "2. TC-SIC2-01 (BVA): Login con contrasena menor a 8 caracteres",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"TC-SIC2-01: Rechaza contrasena de 7 caracteres\", function () {",
+                            "    pm.expect(pm.response.text()).to.include(\"Error: La contraseña debe contener al menos 8 caracteres.\");",
+                            "});",
+                            "pm.test(\"RNF-01: Tiempo de respuesta menor a 500ms\", function () {",
+                            "    pm.expect(pm.response.responseTime).to.be.below(500);",
+                            "});"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "urlencoded",
+                    "urlencoded": [
+                        {
+                            "key": "email",
+                            "value": "maria.giraldo663@pascualbravo.edu.co",
+                            "type": "text"
+                        },
+                        {
+                            "key": "password",
+                            "value": "Pass123",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "http://127.0.0.1:5000/login",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "5000",
+                    "path": [
+                        "login"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "3. TC-SIC2-03 (BVA): Login con contrasena mayor a 16 caracteres",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"TC-SIC2-03: Rechaza contrasena de 17 caracteres\", function () {",
+                            "    pm.expect(pm.response.text()).to.include(\"Error: La contraseña no puede superar los 16 caracteres.\");",
+                            "});"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "urlencoded",
+                    "urlencoded": [
+                        {
+                            "key": "email",
+                            "value": "maria.giraldo663@pascualbravo.edu.co",
+                            "type": "text"
+                        },
+                        {
+                            "key": "password",
+                            "value": "Password123456789",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "http://127.0.0.1:5000/login",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "5000",
+                    "path": [
+                        "login"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "4. TC-SIC2-04: Login Exitoso Estudiante (Maria Yazmin)",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"TC-SIC2-04: Autenticacion exitosa y carga de Home\", function () {",
+                            "    pm.response.to.have.status(200);",
+                            "    pm.expect(pm.response.text()).to.include(\"¡Bienvenid@ a SICAPP!\");",
+                            "});"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "urlencoded",
+                    "urlencoded": [
+                        {
+                            "key": "email",
+                            "value": "maria.giraldo663@pascualbravo.edu.co",
+                            "type": "text"
+                        },
+                        {
+                            "key": "password",
+                            "value": "Password123",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "http://127.0.0.1:5000/login",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "5000",
+                    "path": [
+                        "login"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "5. TC-SIC11-01 (RBAC): Estudiante intenta acceder a /gestion-notas (403 Forbidden)",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"TC-SIC11-01: Retorna codigo HTTP 403 Forbidden para Estudiante\", function () {",
+                            "    pm.response.to.have.status(403);",
+                            "});",
+                            "pm.test(\"TC-SIC11-01: Renderiza plantilla de Acceso Denegado\", function () {",
+                            "    pm.expect(pm.response.text()).to.include(\"Acceso Denegado (TC-SIC11-01)\");",
+                            "});"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://127.0.0.1:5000/gestion-notas",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "5000",
+                    "path": [
+                        "gestion-notas"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "6. TC-SIC2-04 (Docente): Login Exitoso Docente (Santiago Moreno)",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"Login exitoso con cuenta DOCENTE\", function () {",
+                            "    pm.response.to.have.status(200);",
+                            "    pm.expect(pm.response.text()).to.include(\"Hola SANTIAGO\");",
+                            "});"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "urlencoded",
+                    "urlencoded": [
+                        {
+                            "key": "email",
+                            "value": "santiago.moreno@pascualbravo.edu.co",
+                            "type": "text"
+                        },
+                        {
+                            "key": "password",
+                            "value": "DocentePass1",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "http://127.0.0.1:5000/login",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "5000",
+                    "path": [
+                        "login"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "7. TC-SIC11-02 (RBAC): Docente accede a /gestion-notas (200 OK)",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"TC-SIC11-02: Retorna codigo HTTP 200 OK para Docente\", function () {",
+                            "    pm.response.to.have.status(200);",
+                            "});",
+                            "pm.test(\"TC-SIC11-02: Concede acceso al modulo de Gestion de Notas\", function () {",
+                            "    pm.expect(pm.response.text()).to.include(\"TC-SIC11-02\");",
+                            "});"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://127.0.0.1:5000/gestion-notas",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "5000",
+                    "path": [
+                        "gestion-notas"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "8. TC-SIC26-02: Logout y desvinculacion de Token Push",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"TC-SIC26-02: Cierra sesion y desvincula Token Push\", function () {",
+                            "    pm.response.to.have.status(200);",
+                            "    pm.expect(pm.response.text()).to.include(\"Sesión cerrada. Token Push desvinculado correctamente.\");",
+                            "});"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://127.0.0.1:5000/logout",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "5000",
+                    "path": [
+                        "logout"
+                    ]
+                }
+            }
+        }
+    ]
+}

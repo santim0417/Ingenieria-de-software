@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>SICAPP - Inicio</title>
+    <style>
+        body { margin: 0; font-family: Arial, sans-serif; background-color: #f4f6f9; }
+        .header-top { background: #fff; padding: 10px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #ddd; }
+        .logo-title { font-size: 20px; font-weight: bold; color: #1a365d; }
+        .nav-bar { background-color: #1e293b; padding: 10px 40px; }
+        .nav-bar a { color: white; text-decoration: none; margin-right: 20px; font-weight: bold; }
+        .content { text-align: center; padding: 30px; }
+        .banner { background-color: #0284c7; color: white; padding: 60px 20px; border-radius: 8px; width: 60%; margin: 20px auto; font-size: 24px; font-weight: bold; }
+        .btn-large { background-color: #1e293b; color: white; padding: 15px; width: 60%; margin: 10px auto; border-radius: 6px; font-weight: bold; display: block; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="header-top">
+        <div class="logo-title">INSTITUCIÓN UNIVERSITARIA PASCUAL BRAVO | SICAPP</div>
+        <div><span>{{ usuario.nombre.split()[0] }}</span> | <a href="/logout">Cerrar sesión</a></div>
+    </div>
+    <div class="nav-bar">
+        <a href="/home">Inicio</a>
+        <a href="/estudiantes">Estudiantes</a>
+        <a href="/extension">Extensión</a>
+    </div>
+    <div class="content">
+        <h2>Hola {{ usuario.nombre.split()[0] }}, ¡Bienvenid@ a SICAPP! 😊</h2>
+        <div class="banner">Ingresa a nuestras BIBLIOTECAS DIGITALES</div>
+        <a href="#" class="btn-large">CARNET DIGITAL</a>
+        <a href="#" class="btn-large">ACTIVIDADES</a>
+        <a href="#" class="btn-large">ENCUESTAS</a>
+    </div>
+</body>
+</html>
